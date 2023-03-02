@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+flask = "==2.2.3"
+gunicorn = "==20.1.0"
+
+[dev-packages]
+flask = "==2.2.3"
+pandas = "==1.5.3"
+gunicorn = "*"
+
+[requires]
+python_version = "3.10"
