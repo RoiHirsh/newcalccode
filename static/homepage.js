@@ -11,14 +11,11 @@ let templateDict = {};
   
 function toggleButton(button) {
     button.classList.toggle("active");
-    console.log('this is clicked: ', button.id)
     if (button.classList.contains("active")) {
         fetch("/get_laws?id=" + button.id)
             .then(response => response.json())
             .then(data => {
                 if (data !== null) {
-                    console.log("Values for column " + button.id + ":");
-                    console.log(data);
                     // Create the HTML template for the values
                     let container = document.getElementById("values-container");
                     for (let i = 0; i < data.length; i++) {
@@ -31,7 +28,6 @@ function toggleButton(button) {
                             templateDict[templateId].push(button.id);
                         }
                     }
-                    console.log(templateDict)
                 } else {
                     console.log("No values for column " + button.id);
                 }
@@ -40,7 +36,6 @@ function toggleButton(button) {
                 console.error(error);
             });
         } else {
-            console.log("Button " + button.id + " was toggled off");
             for (let templateId in templateDict) {
                 let buttonIds = templateDict[templateId];
                 let index = buttonIds.indexOf(button.id);
@@ -54,7 +49,6 @@ function toggleButton(button) {
                   }
                 }
               }
-            console.log(templateDict)
     }
 }
 

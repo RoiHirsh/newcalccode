@@ -38,28 +38,28 @@ body {
     height: 80vh;
     overflow-y: scroll;
     max-height: calc(100vh - 300px);
-  }
-  .reload-button {
+}
+.reload-button {
     text-align: center;
     margin-top: 10px;
-  }
+}
   
-  .reload-button button {
+.reload-button button {
     background-color: rgb(162, 154, 154);
     color: white;
     border-color: rgb(162, 154, 154);;
-  }
-  .reload-button button:hover {
+}
+.reload-button button:hover {
     background-color: white;
     color: rgb(162, 154, 154);
     border-color: grey;
-  }
+}
 
-  .value-wrapper {
+.value-wrapper {
     border: 1px solid #302222;
     border-radius: 2px;
     margin: 5px;
     padding: 5px;
-  }
+}
 
   

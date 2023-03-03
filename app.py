@@ -1,10 +1,8 @@
-import pandas as pd
 from flask import Flask, render_template, request, jsonify
 import csv
 
 app = Flask(__name__)
 
-df = pd.read_csv("files/laws.csv")
 filename = "files/inputs.csv"   
 with open(filename, 'r') as file:
     csv_reader = csv.reader(file)
@@ -24,7 +22,6 @@ def index():
     return render_template("homepage.html", cols=relevant_columns)
 
 @app.route("/get_laws")
-@app.route("/get_laws")
 def get_laws():
     id = request.args.get("id")
     with open(filename, "r") as file:
@@ -40,16 +37,6 @@ def get_laws():
             if row[index] == "1":
                 rows.append([row[0], row[1], row[2], row[3],i+2])
         return jsonify(rows)
-    
-@app.route("/submit", methods=["POST"])
-def laws():
-    options = request.form.getlist("options")
-
-    affected_by_laws = set()
-    for op in options:
-        inds = set(df.index[df[op] == 1].tolist())
-        affected_by_laws.update(inds)
-    return render_template("laws.html", laws=df["law"].iloc[list(affected_by_laws)])
 
 if __name__ == "__main__":
     app.run(debug=True)
