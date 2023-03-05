@@ -3,8 +3,8 @@ import csv
 
 app = Flask(__name__)
 
-filename = "files/inputs.csv"   
-with open(filename, 'r') as file:
+filename = "files/inputzz.csv"   
+with open(filename, 'r', encoding='utf-8') as file:
     csv_reader = csv.reader(file)
     rows = list(csv_reader)
 
@@ -24,7 +24,7 @@ def index():
 @app.route("/get_laws")
 def get_laws():
     id = request.args.get("id")
-    with open(filename, "r") as file:
+    with open(filename, "r", encoding='utf-8') as file:
         csv_reader = csv.reader(file)
         # Find the column index for the given id
         header = next(csv_reader)
